@@ -1,27 +1,43 @@
-local function get_separator()
+local mod = {};
+
+function mod.get_separator()
   return vim.loop.os_uname().version:match('Windows') and '\\' or '/';
 end
 
-local function resolve(...)
-  return table.concat({ ... }, get_separator());
+function mod.resolve(...)
+  return table.concat({ ... }, mod.get_separator());
 end
 
-local function exists(path)
+function mod.exists(path)
   return vim.fn.empty(vim.fn.glob(path)) == 0;
 end
 
-local function dir_exists(path)
+function mod.dir_exists(path)
   return vim.fn.isdirectory(path) == 1;
 end
 
-local function file_exists(path)
-  return exists(path) and dir_exists(path) ~= true;
+function mod.file_exists(path)
+  return mod.exists(path) and mod.dir_exists(path) ~= true;
 end
 
-return {
-  resolve = resolve,
-  exists = exists,
-  dir_exists = dir_exists,
-  file_exists = file_exists,
-  get_separator = get_separator
-};
+function mod.get_package_path()
+  return mod.resolve(vim.fn.stdpath('data'), 'site', 'pack');
+end
+
+function mod.get_install_path()
+  return mod.resolve(mod.get_package_path(), 'packer', 'start', 'packer');
+end
+
+function mod.get_compile_path()
+  return mod.resolve(vim.fn.stdpath('config'), 'plugin', 'packer.compiled.lua');
+end
+
+function mod.get_cache_path()
+  return mod.resolve(vim.fn.stdpath('cache'));
+end
+
+function mod.get_undo_path()
+  return mod.resolve(mod.get_cache_path(), 'undodir');
+end;
+
+return mod;
