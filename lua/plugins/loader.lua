@@ -21,7 +21,36 @@ function mod.configure(initial)
 
 	packer.init(packer_config);
 	packer.startup(function(use)
-		-- Add plugins here
+		use 'wbthomason/packer.nvim';
+		use 'nvim-lua/plenary.nvim';
+		use 'nvim-treesitter/nvim-treesitter';
+		use 'ray-x/lsp_signature.nvim';
+		use 'neovim/nvim-lspconfig';
+		use 'lewis6991/gitsigns.nvim';
+		use 'windwp/nvim-autopairs';
+		use 'folke/which-key.nvim';
+		use 'ahmedkhalf/project.nvim';
+		use 'numToStr/Comment.nvim';
+
+		use {
+			'hrsh7th/nvim-cmp',
+			requires = {
+				'hrsh7th/cmp-nvim-lsp',
+				'hrsh7th/cmp-buffer',
+				'hrsh7th/cmp-path',
+				'hrsh7th/cmp-cmdline'
+			}
+		};
+		use {
+			'kyazdani42/nvim-tree.lua',
+			requires = 'kyazdani42/nvim-web-devicons'
+		};
+
+		use 'nvim-telescope/telescope.nvim';
+		use {
+			'nvim-telescope/telescope-fzf-native.nvim',
+			run = 'make'
+		};
 
 		if initial then
 			packer.sync();

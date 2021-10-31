@@ -1,9 +1,13 @@
 ### CVim
 
-Neovim configuration built on Lua **Requires Neovim v5.0.0**
+Neovim configuration built on Lua **Requires Neovim v0.5.0**
 
 ### Requirements
 - [ ] Git
+- [ ] Neovim v0.5.0+
+- [ ] Clipboard manager (ie: xsel, xclip, pbcopy)
+- [ ] Python, Pip & Pynvim
+- [ ] Nodejs & Neovim
 
 #### TODO
 
@@ -16,9 +20,15 @@ Neovim configuration built on Lua **Requires Neovim v5.0.0**
 - [ ] Code completion
 - [ ] Visual mode indentation
 - [ ] Syntax highlighting
-- [ ] Throw an error of .cvim already exists
-- [ ] Theming
+- [ ] LSP
+- [ ] Colors
+- [ ] Throw an error if .cvim already exists
 - [ ] Indent
 - [ ] File type plugins
 - [ ] Compilers
-- [ ] Colors
+- [ ] Formatter
+- [ ] Snippets
+- [ ] Status line
+- [ ] Debugger
+- [ ] Project history
+- [ ] Logo and folders
