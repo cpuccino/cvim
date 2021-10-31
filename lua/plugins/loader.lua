@@ -1,6 +1,15 @@
 local mod = {};
 
 local path = require('utilities.path');
+local list = require('plugins.list');
+
+function mod.load_plugins(use)
+	local plugins = list.get_plugins_list();
+
+	for _, plugin in ipairs(plugins) do
+		use(plugin);
+	end
+end
 
 function mod.configure(initial)
 	local packer_ok, packer = pcall(require, 'packer');
@@ -26,63 +35,7 @@ function mod.configure(initial)
 
 	packer.init(packer_config);
 	packer.startup(function(use)
-		use 'wbthomason/packer.nvim';
-		use 'nvim-lua/plenary.nvim';
-		use 'neovim/nvim-lspconfig';
-		use 'ray-x/lsp_signature.nvim';
-		use 'b3nj5m1n/kommentary';
-
-		use({
-			'ahmedkhalf/project.nvim',
-			config = function() require('project_nvim').setup({}) end;
-		});
-
-		use({
-			'folke/which-key.nvim',
-			config = function() require('which-key').setup({}) end;
-		});
-
-		use({
-			'windwp/nvim-autopairs',
-			config = function() require('nvim-autopairs').setup({}) end
-		});
-
-		use({
-			'lewis6991/gitsigns.nvim',
-			config = function() require('gitsigns').setup({}) end
-		});
-
-		use({
-			'nvim-treesitter/nvim-treesitter',
-			config = function() require('nvim-treesitter').setup({}) end
-		});
-
-		use({
-			'hrsh7th/nvim-cmp',
-			requires = {
-				'hrsh7th/cmp-nvim-lsp',
-				'hrsh7th/cmp-buffer',
-				'hrsh7th/cmp-path',
-				'hrsh7th/cmp-cmdline'
-			}
-		});
-
-		use({
-			'kyazdani42/nvim-tree.lua',
-			requires = 'kyazdani42/nvim-web-devicons',
-			config = function() require('nvim-tree').setup({}) end
-		});
-
-		use({
-			'nvim-telescope/telescope.nvim',
-			requires = {
-				{
-					'nvim-telescope/telescope-fzf-native.nvim',
-					run = 'make'
-				}
-			}
-		});
-
+		mod.load_plugins(use);
 		if initial then
 			packer.sync();
 		end
