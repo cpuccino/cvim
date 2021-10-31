@@ -14,18 +14,27 @@ Neovim configuration built on Lua **Requires Neovim v0.5.0**
 - [x] Spacing
 - [x] Undo & Redo persistent history
 - [x] Initial configuration plugins
+- [x] LSP Intellisense & Code completion
 - [ ] Buffers
-- [ ] LSP Intellisense & Code completion
 - [ ] Syntax highlighting
 - [ ] Clipboard
 - [ ] Tree
 - [ ] Project history
-- [ ] Keybinding
 - [ ] Fuzzyfinder
 - [ ] Visual mode indentation
 - [ ] Colors
 - [ ] Throw an error if .cvim already exists
 - [ ] Indent
+- [ ] Keybinding
+  - [ ] general normal mode, indenting multiple times on normal mode, comment, rename variable
+  - [ ] buffer new, close, previous, next, rearrange
+  - [ ] lsp definition, declaration, references, implementation, hover, signature, go back
+  - [ ] debugging start, continue, stop, add breakpoint
+  - [ ] navigation, tree
+  - [ ] terminal, open, close, new, next, previous
+  - [ ] git blame, history
+  - [ ] format file
+  - [ ] lsp info
 - [ ] File type plugins
 - [ ] Compilers
 - [ ] Formatter
@@ -36,4 +45,6 @@ Neovim configuration built on Lua **Requires Neovim v0.5.0**
 - [ ] Dashboard
 - [ ] Optimization
   - [ ] Optional plugins
-  - [ ] Settings
+  - [ ] Load all languages (ref: https://github.com/LunarVim/LunarVim/blob/95d8127f319d135001eb3fd07b30db3fd43d7ee4/lua/lvim/lsp/manager.lua)
+  - [ ] Settings (reference vscode settings - ex: git blame on by default)
+- Change structure to lua/*/{ ..., load.lua, init.lua }

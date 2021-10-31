@@ -5,7 +5,11 @@ function mod.get_plugins_list()
     'wbthomason/packer.nvim',
     'nvim-lua/plenary.nvim',
     'b3nj5m1n/kommentary',
-    'neovim/nvim-lspconfig',
+    {
+      'neovim/nvim-lspconfig',
+			requires = 'williamboman/nvim-lsp-installer',
+		},
+    'glepnir/lspsaga.nvim',
     'ray-x/lsp_signature.nvim',
 		'kyazdani42/nvim-web-devicons',
 		'romgrk/barbar.nvim',

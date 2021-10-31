@@ -1,7 +1,7 @@
 local mod = {};
 
 local path = require('utilities.path');
-local settings = require('configuration.settings');
+local settings = require('configurations.settings');
 
 function mod.init()
   os.execute('mkdir ' .. path.get_cache_path() .. ' -p');
