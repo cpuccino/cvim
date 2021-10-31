@@ -25,7 +25,7 @@ function mod.get_package_path()
 end
 
 function mod.get_install_path()
-  return mod.resolve(mod.get_package_path(), 'packer', 'start', 'packer');
+  return mod.resolve(mod.get_package_path(), 'packer', 'start', 'packer.nvim');
 end
 
 function mod.get_compile_path()
