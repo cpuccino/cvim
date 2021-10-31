@@ -8,6 +8,11 @@ function mod.configure(initial)
 		return
 	end
 
+	-- print('initial: ' .. tostring(initial));
+	-- print('package root: ' .. path.get_package_path());
+	-- print('compile path: ' .. path.get_compile_path());
+	-- print('install path: ' .. path.get_install_path());
+
 	local packer_config = {
 		package_root = path.get_package_path(),
 		compile_path = path.get_compile_path(),
@@ -23,16 +28,36 @@ function mod.configure(initial)
 	packer.startup(function(use)
 		use 'wbthomason/packer.nvim';
 		use 'nvim-lua/plenary.nvim';
-		use 'nvim-treesitter/nvim-treesitter';
-		use 'ray-x/lsp_signature.nvim';
 		use 'neovim/nvim-lspconfig';
-		use 'lewis6991/gitsigns.nvim';
-		use 'windwp/nvim-autopairs';
-		use 'folke/which-key.nvim';
-		use 'ahmedkhalf/project.nvim';
-		use 'numToStr/Comment.nvim';
+		use 'ray-x/lsp_signature.nvim';
+		use 'b3nj5m1n/kommentary';
 
-		use {
+		use({
+			'ahmedkhalf/project.nvim',
+			config = function() require('project_nvim').setup({}) end;
+		});
+
+		use({
+			'folke/which-key.nvim',
+			config = function() require('which-key').setup({}) end;
+		});
+
+		use({
+			'windwp/nvim-autopairs',
+			config = function() require('nvim-autopairs').setup({}) end
+		});
+
+		use({
+			'lewis6991/gitsigns.nvim',
+			config = function() require('gitsigns').setup({}) end
+		});
+
+		use({
+			'nvim-treesitter/nvim-treesitter',
+			config = function() require('nvim-treesitter').setup({}) end
+		});
+
+		use({
 			'hrsh7th/nvim-cmp',
 			requires = {
 				'hrsh7th/cmp-nvim-lsp',
@@ -40,17 +65,23 @@ function mod.configure(initial)
 				'hrsh7th/cmp-path',
 				'hrsh7th/cmp-cmdline'
 			}
-		};
-		use {
-			'kyazdani42/nvim-tree.lua',
-			requires = 'kyazdani42/nvim-web-devicons'
-		};
+		});
 
-		use 'nvim-telescope/telescope.nvim';
-		use {
-			'nvim-telescope/telescope-fzf-native.nvim',
-			run = 'make'
-		};
+		use({
+			'kyazdani42/nvim-tree.lua',
+			requires = 'kyazdani42/nvim-web-devicons',
+			config = function() require('nvim-tree').setup({}) end
+		});
+
+		use({
+			'nvim-telescope/telescope.nvim',
+			requires = {
+				{
+					'nvim-telescope/telescope-fzf-native.nvim',
+					run = 'make'
+				}
+			}
+		});
 
 		if initial then
 			packer.sync();

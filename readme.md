@@ -13,14 +13,15 @@ Neovim configuration built on Lua **Requires Neovim v0.5.0**
 
 - [x] Spacing
 - [x] Undo & Redo persistent history
-- [ ] Clipboard
-- [ ] Keybinding
-- [ ] Nerd tree
-- [ ] Fuzzyfinder
-- [ ] Code completion
-- [ ] Visual mode indentation
+- [x] Initial configuration plugins
+- [ ] LSP Intellisense & Code completion
 - [ ] Syntax highlighting
-- [ ] LSP
+- [ ] Clipboard
+- [ ] Tree
+- [ ] Project history
+- [ ] Keybinding
+- [ ] Fuzzyfinder
+- [ ] Visual mode indentation
 - [ ] Colors
 - [ ] Throw an error if .cvim already exists
 - [ ] Indent
@@ -30,5 +31,4 @@ Neovim configuration built on Lua **Requires Neovim v0.5.0**
 - [ ] Snippets
 - [ ] Status line
 - [ ] Debugger
-- [ ] Project history
-- [ ] Logo and folders
+- [ ] Logo and installation folders
