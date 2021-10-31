@@ -14,6 +14,7 @@ Neovim configuration built on Lua **Requires Neovim v0.5.0**
 - [x] Spacing
 - [x] Undo & Redo persistent history
 - [x] Initial configuration plugins
+- [ ] Buffers
 - [ ] LSP Intellisense & Code completion
 - [ ] Syntax highlighting
 - [ ] Clipboard
@@ -32,3 +33,7 @@ Neovim configuration built on Lua **Requires Neovim v0.5.0**
 - [ ] Status line
 - [ ] Debugger
 - [ ] Logo and installation folders
+- [ ] Dashboard
+- [ ] Optimization
+  - [ ] Optional plugins
+  - [ ] Settings

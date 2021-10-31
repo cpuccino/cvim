@@ -7,6 +7,12 @@ function mod.get_plugins_list()
     'b3nj5m1n/kommentary',
     'neovim/nvim-lspconfig',
     'ray-x/lsp_signature.nvim',
+		'kyazdani42/nvim-web-devicons',
+		'romgrk/barbar.nvim',
+		{
+			'nvim-lualine/lualine.nvim',
+			config = function() require('lualine').setup({}) end
+		},
     {
 			'nvim-treesitter/nvim-treesitter',
 			config = function() require('nvim-treesitter').setup({}) end
