@@ -41,12 +41,14 @@ Neovim configuration built on Lua **Requires Neovim v0.5.0**
   - [ ] Compilers
   - [ ] Formatter
   - [ ] Snippets
+  - [ ] Code folding
 - [ ] Settings (reference vscode settings - ex: git blame on by default)
 - [ ] Theming (ie: colors, component design - buffers, tree, status line, terminal)
 - [ ] Auto install requirements
 - [ ] Optimization
   - [ ] Optional plugins
-  - [ ] Load all languages (ref: https://github.com/LunarVim/LunarVim/blob/95d8127f319d135001eb3fd07b30db3fd43d7ee4/lua/lvim/lsp/manager.lua)
+  - [ ] Install all languages and load them when buffer loads instead of having to `LspInstall <language>` (ref: https://github.com/LunarVim/LunarVim/blob/95d8127f319d135001eb3fd07b30db3fd43d7ee4/lua/lvim/lsp/manager.lua)
+  - [ ] Install all treesitter and load them when buffer loads instead of having to `LspInstall <language>`
 - [ ] Refactor - Change structure to lua/*/{ ..., load.lua, init.lua }
 - [ ] Warn on override (ex: Throw an error if .cvim already exists)
 - [ ] Logger (ie: keep track of load errors and time)

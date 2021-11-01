@@ -19,7 +19,12 @@ function mod.get_plugins_list()
 		},
     {
 			'nvim-treesitter/nvim-treesitter',
-			config = function() require('nvim-treesitter').setup({}) end
+			run = ':TSUpdate',
+			config = function()
+				require('nvim-treesitter.configs').setup({
+					ensure_installed = 'maintained'
+				})
+			end
 		},
     {
 			'hrsh7th/nvim-cmp',
