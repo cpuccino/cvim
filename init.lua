@@ -1,12 +1,12 @@
 local configurations = require('configurations');
 local path = require('utilities.path');
 local plugins = require('plugins');
-local intellisense = require('intellisense');
+local core = require('core');
 
 local function main()
 	configurations.init();
 	plugins.init();
-	intellisense.init();
+	core.init();
 
 	-- print(path.exists('/home/cpuccino/'));
 	-- print('joined path', path.resolve('path', 'path2'));
