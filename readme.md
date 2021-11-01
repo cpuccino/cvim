@@ -14,19 +14,20 @@ Neovim configuration built on Lua **Requires Neovim v0.5.0**
 - [x] Spacing
 - [x] Undo & Redo persistent history
 - [x] Initial configuration plugins
-- [x] LSP Intellisense & Code completion
-- [ ] Buffers
-- [ ] Syntax highlighting
-- [ ] Clipboard
-- [ ] Tree
-- [ ] Project history
-- [ ] Fuzzyfinder
-- [ ] Visual mode indentation
-- [ ] Colors
-- [ ] Throw an error if .cvim already exists
-- [ ] Indent
+- [x] Syntax highlighting
+- [ ] IDE Core
+  - [ ] Buffers
+  - [ ] Clipboard
+  - [ ] Tree
+  - [ ] Fuzzyfinder
+  - [ ] Debugger
+  - [ ] Status line
+  - [ ] Dashboard
+  - [ ] Project history
+  - [x] Intellisense
+  - [x] Code completion
 - [ ] Keybinding
-  - [ ] general normal mode, indenting multiple times on normal mode, comment, rename variable
+  - [ ] general normal mode, indenting multiple times on visual & normal mode, comment, rename variable
   - [ ] buffer new, close, previous, next, rearrange
   - [ ] lsp definition, declaration, references, implementation, hover, signature, go back
   - [ ] debugging start, continue, stop, add breakpoint
@@ -35,16 +36,19 @@ Neovim configuration built on Lua **Requires Neovim v0.5.0**
   - [ ] git blame, history
   - [ ] format file
   - [ ] lsp info
-- [ ] File type plugins
-- [ ] Compilers
-- [ ] Formatter
-- [ ] Snippets
-- [ ] Status line
-- [ ] Debugger
-- [ ] Logo and installation folders
-- [ ] Dashboard
+- [ ] QoL
+  - [ ] File type plugins
+  - [ ] Compilers
+  - [ ] Formatter
+  - [ ] Snippets
+- [ ] Settings (reference vscode settings - ex: git blame on by default)
+- [ ] Theming (ie: colors, component design - buffers, tree, status line, terminal)
+- [ ] Auto install requirements
 - [ ] Optimization
   - [ ] Optional plugins
   - [ ] Load all languages (ref: https://github.com/LunarVim/LunarVim/blob/95d8127f319d135001eb3fd07b30db3fd43d7ee4/lua/lvim/lsp/manager.lua)
-  - [ ] Settings (reference vscode settings - ex: git blame on by default)
-- Change structure to lua/*/{ ..., load.lua, init.lua }
+- [ ] Refactor - Change structure to lua/*/{ ..., load.lua, init.lua }
+- [ ] Warn on override (ex: Throw an error if .cvim already exists)
+- [ ] Logger (ie: keep track of load errors and time)
+- [ ] Add setup steps, settings, and configuration and move documentation to Private storage
+- [ ] Logo and installation folders
