@@ -63,7 +63,8 @@ function mod.get_plugins_list()
     {
 			'kyazdani42/nvim-tree.lua',
 			requires = 'kyazdani42/nvim-web-devicons',
-			config = function() require('nvim-tree').setup({}) end
+			-- config = function() require('nvim-tree').setup({}) end
+			config = function() require('core.tree').load() end
 		}
   };
 end

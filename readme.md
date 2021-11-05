@@ -16,9 +16,9 @@ Neovim configuration built on Lua **Requires Neovim v0.5.0**
 - [x] Initial configuration plugins
 - [x] Syntax highlighting
 - [ ] IDE Core
-  - [ ] Buffers
+  - [x] Buffers
   - [ ] Clipboard
-  - [ ] Tree
+  - [x] Tree
   - [ ] Fuzzyfinder
   - [ ] Debugger
   - [ ] Status line
@@ -49,7 +49,7 @@ Neovim configuration built on Lua **Requires Neovim v0.5.0**
   - [ ] Optional plugins
   - [ ] Install all languages and load them when buffer loads instead of having to `LspInstall <language>` (ref: https://github.com/LunarVim/LunarVim/blob/95d8127f319d135001eb3fd07b30db3fd43d7ee4/lua/lvim/lsp/manager.lua)
   - [ ] Install all treesitter and load them when buffer loads instead of having to `LspInstall <language>`
-- [ ] Refactor - Change structure to lua/*/{ ..., load.lua, init.lua }
+- [ ] Refactor - Change structure to lua/*/{ ..., load.lua, init.lua } and /lua/package https://github.com/luan/nvim/blob/main/init.lua and https://github.com/nvim-telescope/telescope.nvim/tree/master/lua/telescope and 
 - [ ] Warn on override (ex: Throw an error if .cvim already exists)
 - [ ] Logger (ie: keep track of load errors and time)
 - [ ] Add setup steps, settings, and configuration and move documentation to Private storage
