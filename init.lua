@@ -1,7 +1,7 @@
 local configurations = require('configurations');
-local path = require('utilities.path');
-local plugins = require('plugins');
-local core = require('core');
+-- local path = require('utilities.path');
+-- local plugins = require('plugins');
+-- local core = require('core');
 
 local function main()
 	configurations.init();

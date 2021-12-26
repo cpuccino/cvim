@@ -2,7 +2,7 @@ local mod = {};
 
 local path = require('utilities.path');
 
-function mod.get_default_settings()
+local function get_default_settings()
   local default_settings = {
     autoindent = true,
     autoread = true,
@@ -24,7 +24,7 @@ function mod.get_default_settings()
     foldmethod = 'expr',
     conceallevel = 0,
     pumheight = 10,
-    timeoutlen = 1000,
+    timeoutlen = 150,
 
     ignorecase = true,
     smartcase = true,
@@ -71,10 +71,10 @@ function mod.get_default_settings()
   return default_settings;
 end
 
-function mod.load_settings()
+function mod.load()
   os.execute('mkdir ' .. ' -p ' .. path.get_cache_path());
   
-  for key, value in pairs(mod.get_default_settings()) do
+  for key, value in pairs(get_default_settings()) do
     vim.opt[key] = value;
   end
 end
