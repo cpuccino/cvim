@@ -1,7 +1,10 @@
 local mod = {};
 
+local os = require('utilities.os');
+local fn = vim.fn;
+
 function mod.get_separator()
-  return vim.loop.os_uname().version:match('Windows') and '\\' or '/';
+  return os.is_windows() and '\\' or '/';
 end
 
 function mod.resolve(...)
@@ -9,11 +12,11 @@ function mod.resolve(...)
 end
 
 function mod.exists(path)
-  return vim.fn.empty(vim.fn.glob(path)) == 0;
+  return fn.empty(fn.glob(path)) == 0;
 end
 
 function mod.dir_exists(path)
-  return vim.fn.isdirectory(path) == 1;
+  return fn.isdirectory(path) == 1;
 end
 
 function mod.file_exists(path)
@@ -21,7 +24,7 @@ function mod.file_exists(path)
 end
 
 function mod.get_package_path()
-  return mod.resolve(vim.fn.stdpath('data'), 'site', 'pack');
+  return mod.resolve(fn.stdpath('data'), 'site', 'pack');
 end
 
 function mod.get_install_path()
@@ -29,11 +32,11 @@ function mod.get_install_path()
 end
 
 function mod.get_compile_path()
-  return mod.resolve(vim.fn.stdpath('config'), 'plugin', 'packer.compiled.lua');
+  return mod.resolve(fn.stdpath('config'), 'plugin', 'packer.compiled.lua');
 end
 
 function mod.get_cache_path()
-  return mod.resolve(vim.fn.stdpath('cache'));
+  return mod.resolve(fn.stdpath('cache'));
 end
 
 function mod.get_undo_path()
