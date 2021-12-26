@@ -5,8 +5,8 @@ local core = require('core');
 
 local function main()
 	configurations.init();
-	plugins.init();
-	core.init();
+	-- plugins.init();
+	-- core.init();
 
 	-- print(path.exists('/home/cpuccino/'));
 	-- print('joined path', path.resolve('path', 'path2'));

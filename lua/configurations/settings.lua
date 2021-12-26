@@ -23,6 +23,8 @@ function mod.get_default_settings()
     showmode = false,
     foldmethod = 'expr',
     conceallevel = 0,
+    pumheight = 10,
+    timeoutlen = 1000,
 
     ignorecase = true,
     smartcase = true,
@@ -59,19 +61,22 @@ function mod.get_default_settings()
 
     clipboard = 'unnamedplus',
     updatetime = 300,
-    errorbells = false
+    errorbells = false,
+
+    shortmess = vim.opt.shortmess + 'c',
+    whichwrap = vim.opt.whichwrap + '<,>,h,l,[,]',
+    iskeyword = vim.opt.iskeyword + '-'
   };
 
   return default_settings;
 end
 
 function mod.load_settings()
+  os.execute('mkdir ' .. ' -p ' .. path.get_cache_path());
+  
   for key, value in pairs(mod.get_default_settings()) do
     vim.opt[key] = value;
   end
-
-  vim.opt.shortmess:append 'c';
-  vim.opt.whichwrap:append '<,>,h,l,[,]';
 end
 
 return mod;
