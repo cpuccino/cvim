@@ -1,31 +1,30 @@
 ### CVim
 
-Neovim configuration built on Lua **Requires Neovim v0.5.0**
+Neovim configuration built on Lua **Requires Neovim v0.6.0**
 
 ### Requirements
 - [ ] Git
-- [ ] Neovim v0.5.0+
+- [ ] Neovim v0.6.0+
 - [ ] Clipboard manager (ie: xsel, xclip, pbcopy)
 - [ ] Python, Pip & Pynvim
 - [ ] Nodejs & Neovim
 
 #### TODO
 
-- [x] Spacing
 - [x] Undo & Redo persistent history
-- [x] Initial configuration plugins
-- [x] Syntax highlighting
+- [ ] Initial configuration plugins
+- [ ] Syntax highlighting
 - [ ] IDE Core
-  - [x] Buffers
-  - [ ] Clipboard
-  - [x] Tree
+  - [ ] Buffers
+  - [x] Clipboard
+  - [ ] Tree
   - [ ] Fuzzyfinder
   - [ ] Debugger
   - [ ] Status line
   - [ ] Dashboard
   - [ ] Project history
-  - [x] Intellisense
-  - [x] Code completion
+  - [ ] Intellisense
+  - [ ] Code completion
 - [ ] Keybinding
   - [ ] general normal mode, indenting multiple times on visual & normal mode, comment, rename variable
   - [ ] buffer new, close, previous, next, rearrange
@@ -42,6 +41,7 @@ Neovim configuration built on Lua **Requires Neovim v0.5.0**
   - [ ] Formatter
   - [ ] Snippets
   - [ ] Code folding
+  - [ ] Sessions
 - [ ] Settings (reference vscode settings - ex: git blame on by default)
 - [ ] Theming (ie: colors, component design - buffers, tree, status line, terminal)
 - [ ] Auto install requirements
