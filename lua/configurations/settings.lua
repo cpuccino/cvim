@@ -24,7 +24,7 @@ local function get_default_settings()
     foldmethod = 'expr',
     conceallevel = 0,
     pumheight = 10,
-    timeoutlen = 150,
+    timeoutlen = 200,
 
     ignorecase = true,
     smartcase = true,
