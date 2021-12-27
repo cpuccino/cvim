@@ -7,10 +7,7 @@ local fn = vim.fn;
 local nvim_execute = vim.api.nvim_command;
 
 local install_path = path.get_install_path();
-
-local function is_bootstrap()
-	return path.dir_exists(install_path) == false;
-end
+local is_bootstrap = path.dir_exists(install_path) == false;
 
 local function reload_settings_on_modify()
 	augroups.execute_augroups({
@@ -19,14 +16,14 @@ local function reload_settings_on_modify()
 end
 
 function mod.setup()
-	if is_bootstrap() == false then
-		print('Skipping bootstrap...')
+	if is_bootstrap == false then
+		print('Packer\'s configured. Skipping bootstrap.')
 		return;
 	end
 
 	print('Installing packer...');
 	local clone_repo_packer_cmd = 'git clone --depth 1 https://github.com/wbthomason/packer.nvim' .. ' ' .. install_path;
-	fn.system(clone_repo_packer_cmd);
+	os.execute(clone_repo_packer_cmd);
 	nvim_execute('packadd packer.nvim');
 	print('Successfully installed packer.')
 end
@@ -51,10 +48,28 @@ function mod.configure()
 		use 'wbthomason/packer.nvim';
 		use 'nvim-lua/popup.nvim';
 		use 'nvim-lua/plenary.nvim';
+
+		use {
+			'hrsh7th/nvim-cmp',
+			requires = {
+				{ 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+				{ 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+				{ 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
+				{
+					'hrsh7th/cmp-vsnip',
+					after = 'nvim-cmp',
+					requires = {
+						'hrsh7th/vim-vsnip',
+						'rafamadriz/friendly-snippets'
+					}
+				}
+			}
+		};
 		
-		if is_bootstrap() then
-			print('Syncing packer.')
-			packer.sync()
+		if is_bootstrap then
+			print('Syncing packer...');
+			packer.sync();
+			print('Successfully synced packer.');
 		end
 	end)
 end
