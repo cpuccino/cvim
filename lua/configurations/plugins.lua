@@ -7,26 +7,30 @@ local fn = vim.fn;
 local nvim_execute = vim.api.nvim_command;
 
 local install_path = path.get_install_path();
-local is_bootstrap = path.dir_exists(install_path) == false;
+
+local function is_bootstrap()
+	return path.dir_exists(install_path) == false;
+end
 
 local function reload_settings_on_modify()
 	augroups.execute_augroups({
-		reload_packer_config = {'BufWritePost plugins.lua source <afile> | PackerSync'}
+		reload_packer_config = { 'BufWritePost plugins.lua source <afile> | PackerSync' }
 	});
 end
 
 function mod.install()
-end
-
-function mod.load()
-	if is_bootstrap then
-		local clone_repo_packer_cmd = 'git clone --depth 1 https://github.com/wbthomason/packer.nvim';
-		fn.system(clone_repo_packer_cmd .. ' ' .. install_path);
-		nvim_execute('packadd packer.nvim');
+	if is_bootstrap() == false then
+		return;
 	end
 
-	reload_settings_on_modify();
+	print('Installing packer...');
+	local clone_repo_packer_cmd = 'git clone --depth 1 https://github.com/wbthomason/packer.nvim';
+	fn.system(clone_repo_packer_cmd .. ' ' .. install_path);
+	nvim_execute('packadd packer.nvim');
+	print('Successfully installed packer.')
+end
 
+function mod.configure()
 	local packer_ok, packer = pcall(require, 'packer')
 	if not packer_ok then
 		return
@@ -46,10 +50,16 @@ function mod.load()
 		use 'nvim-lua/popup.nvim';
 		use 'nvim-lua/plenary.nvim';
 		
-		if is_bootstrap then
+		if is_bootstrap() then
 			packer.sync()
 		end
 	end)
+end
+
+function mod.load()
+	mod.install();
+	mod.configure();
+	reload_settings_on_modify();
 end
 
 return mod;

@@ -3,7 +3,7 @@ local mod = {};
 local os = require('utilities.os');
 
 local set_keymap = vim.api.nvim_set_keymap;
-local options = {noremap = true, silent = true};
+local options = { noremap = true, silent = true };
 
 local function set_keybindings_leader()
 	set_keymap('', '<Space>', '<Nop>', options);

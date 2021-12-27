@@ -8,7 +8,7 @@ function mod.get_separator()
 end
 
 function mod.resolve(...)
-	return table.concat({...}, mod.get_separator());
+	return table.concat({ ... }, mod.get_separator());
 end
 
 function mod.exists(path)
