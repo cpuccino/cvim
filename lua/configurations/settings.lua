@@ -68,7 +68,7 @@ local function get_default_settings()
 end
 
 function mod.load()
-	os.execute('mkdir ' .. ' -p ' .. path.get_cache_path());
+	os.execute('mkdir -p' .. ' ' .. path.get_cache_path());
 
 	for key, value in pairs(get_default_settings()) do
 		vim.opt[key] = value;
