@@ -54,3 +54,4 @@ Neovim configuration built on Lua **Requires Neovim v0.6.0**
 - [ ] Logger (ie: keep track of load errors and time)
 - [ ] Add setup steps, settings, and configuration and move documentation to Private storage
 - [ ] Logo and installation folders
+- [ ] Use prequire https://github.com/shift-d/nv/search?p=2&q=prequire

@@ -41,9 +41,17 @@ local kind_icons = {
 };
 
 local menu_label = {
+  nvim_lsp = '[LSP]',
   vsnip = '[Snippet]',
   buffer = '[Buffer]',
   path = '[Path]'
+};
+
+local sources = {
+  { name = 'nvim_lsp' },
+  { name = 'vsnip' },
+  { name = 'buffer' },
+  { name = 'path' }
 };
 
 function mod.configure()
@@ -98,11 +106,15 @@ function mod.configure()
         return item;
       end
     },
-    sources = cmp.config.sources({
-      { name = 'vsnip' },
-      { name = 'buffer' },
-      { name = 'path' }
-    }),
+    sources = cmp.config.sources(sources),
+
+    confirm_opts = {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = false,
+    },
+    documentation = {
+      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    },
   };
 
   cmp.setup(cmp_config);
