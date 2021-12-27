@@ -5,26 +5,26 @@ local os = require('utilities.os');
 local set_keymap = vim.api.nvim_set_keymap;
 local options = { noremap = true, silent = true };
 
-local function set_keybindings_leader()
+local function map_leader()
 	set_keymap('', '<Space>', '<Nop>', options);
 	vim.g.mapleader = " ";
 end
 
-local function set_keybindings_window_navigation()
+local function map_window_navigation()
 	set_keymap('n', '<C-k>', '<C-w>k', options);
 	set_keymap('n', '<C-l>', '<C-w>l', options);
 	set_keymap('n', '<C-j>', '<C-w>j', options);
 	set_keymap('n', '<C-h>', '<C-w>h', options);
 end
 
-local function set_keybindings_window_resize()
+local function map_resize()
 	set_keymap('n', '<C-K>', ':resize +2<CR>', options);
 	set_keymap('n', '<C-L>', ':vertical resize +2<CR>', options);
 	set_keymap('n', '<C-J>', ':resize -2<CR>', options);
 	set_keymap('n', '<C-H>', ':vertical resize -2<CR>', options);
 end
 
-local function set_keybindings_buffer()
+local function map_buffer()
 	set_keymap('n', '<Tab-p>', ':bnext<CR>', options);
 	set_keymap('n', '<Tab-n>', ':bprevious<CR>', options);
 end
@@ -32,7 +32,7 @@ end
 local function set_keybindings_explorer()
 end
 
-local function set_keybindings_editor()
+local function map_editor()
 	set_keymap('i', 'jk', '<Esc>', options);
 	set_keymap('v', 'jk', '<Esc>', options);
 
@@ -51,13 +51,17 @@ local function set_keybindings_editor()
 	set_keymap('v', '<M-j>', ':move \'>+1<CR>gv=gv', options);
 end
 
+function mod.configure()
+	map_leader();
+	map_window_navigation();
+	map_resize();
+	map_buffer();
+	map_resize();
+	map_editor();
+end
+
 function mod.load()
-	set_keybindings_leader();
-	set_keybindings_window_navigation();
-	set_keybindings_window_resize();
-	set_keybindings_buffer();
-	set_keybindings_window_resize();
-	set_keybindings_editor();
+	mod.configure();
 end
 
 return mod; 

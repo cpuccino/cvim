@@ -1,6 +1,7 @@
 local mod = {};
 
 local path = require('utilities.path');
+local fn = vim.fn;
 
 local function get_default_settings()
 	local default_settings = {
@@ -67,12 +68,22 @@ local function get_default_settings()
 	return default_settings;
 end
 
-function mod.load()
-	os.execute('mkdir -p' .. ' ' .. path.get_cache_path());
+function mod.setup()
+	local create_cache_path_cmd = 'mkdir -p' .. ' ' .. path.get_cache_path();
+	fn.system(create_cache_path_cmd);
+end
 
+function mod.configure()
+	print('Mapping default settings...');
 	for key, value in pairs(get_default_settings()) do
 		vim.opt[key] = value;
 	end
+	print('Successfully mapped default settings.');
+end
+
+function mod.load()
+	mod.setup();
+	mod.configure();
 end
 
 return mod;

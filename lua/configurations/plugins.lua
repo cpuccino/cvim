@@ -18,14 +18,15 @@ local function reload_settings_on_modify()
 	});
 end
 
-function mod.install()
+function mod.setup()
 	if is_bootstrap() == false then
+		print('Skipping bootstrap...')
 		return;
 	end
 
 	print('Installing packer...');
-	local clone_repo_packer_cmd = 'git clone --depth 1 https://github.com/wbthomason/packer.nvim';
-	fn.system(clone_repo_packer_cmd .. ' ' .. install_path);
+	local clone_repo_packer_cmd = 'git clone --depth 1 https://github.com/wbthomason/packer.nvim' .. ' ' .. install_path;
+	fn.system(clone_repo_packer_cmd);
 	nvim_execute('packadd packer.nvim');
 	print('Successfully installed packer.')
 end
@@ -33,6 +34,7 @@ end
 function mod.configure()
 	local packer_ok, packer = pcall(require, 'packer')
 	if not packer_ok then
+		print('Packer not found.')
 		return
 	end
 
@@ -51,15 +53,20 @@ function mod.configure()
 		use 'nvim-lua/plenary.nvim';
 		
 		if is_bootstrap() then
+			print('Syncing packer.')
 			packer.sync()
 		end
 	end)
 end
 
-function mod.load()
-	mod.install();
-	mod.configure();
+function mod.post_setup()
 	reload_settings_on_modify();
+end
+
+function mod.load()
+	mod.setup();
+	mod.configure();
+	mod.post_setup();
 end
 
 return mod;

@@ -8,6 +8,7 @@ function mod.execute_augroups(definitions)
 		nvim_execute('autocmd!');
 		nvim_execute('autocmd' .. ' ' .. table.concat(definition, ' '));
 		nvim_execute('augroup END');
+		print('[' .. group_name .. ']' .. ' ' .. 'autocmd has been registered.');
 	end
 end
 
