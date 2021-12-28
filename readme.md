@@ -8,6 +8,7 @@ Neovim configuration built on Lua **Requires Neovim v0.6.0**
 - [ ] Clipboard manager (ie: xsel, xclip, pbcopy)
 - [ ] Python, Pip & Pynvim
 - [ ] Nodejs & Neovim
+- [ ] Terminal using a patched font (NerdFont)
 
 #### TODO
 

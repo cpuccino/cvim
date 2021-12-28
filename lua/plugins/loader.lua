@@ -9,6 +9,28 @@ local nvim_execute = vim.api.nvim_command;
 local install_path = path.get_install_path();
 local is_bootstrap = path.dir_exists(install_path) == false;
 
+local plugins = {
+	'wbthomason/packer.nvim',
+	'nvim-lua/popup.nvim',
+	'nvim-lua/plenary.nvim',
+	{
+		'hrsh7th/nvim-cmp',
+		requires = {
+			{ 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+			{ 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+			{ 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
+			{
+				'hrsh7th/cmp-vsnip',
+				after = 'nvim-cmp',
+				requires = {
+					'hrsh7th/vim-vsnip',
+					'rafamadriz/friendly-snippets'
+				}
+			}
+		}
+	}
+};
+
 local function reload_settings_on_modify()
 	augroups.execute_augroups({
 		reload_packer_config = { 'BufWritePost plugins.lua source <afile> | PackerSync' }
@@ -45,26 +67,9 @@ function mod.configure()
 	});
 
 	return packer.startup(function(use)
-		use 'wbthomason/packer.nvim';
-		use 'nvim-lua/popup.nvim';
-		use 'nvim-lua/plenary.nvim';
-
-		use {
-			'hrsh7th/nvim-cmp',
-			requires = {
-				{ 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-				{ 'hrsh7th/cmp-path', after = 'nvim-cmp' },
-				{ 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
-				{
-					'hrsh7th/cmp-vsnip',
-					after = 'nvim-cmp',
-					requires = {
-						'hrsh7th/vim-vsnip',
-						'rafamadriz/friendly-snippets'
-					}
-				}
-			}
-		};
+    for _, plugin in ipairs(plugins) do
+			use(plugin);
+		end
 		
 		if is_bootstrap then
 			print('Syncing packer...');

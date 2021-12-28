@@ -1,10 +1,10 @@
 local mod = {};
 
-local setup = require('plugins.setup');
+local loader = require('plugins.loader');
 local intellisense = require('plugins.intellisense');
 
 function mod.load()
-  setup.load();
+  loader.load();
   intellisense.load();
 end
 
