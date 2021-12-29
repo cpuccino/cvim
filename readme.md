@@ -58,6 +58,7 @@ Neovim configuration built on Lua **Requires Neovim v0.6.0**
 - [ ] Warn on override (ex: Throw an error if .cvim already exists)
 - [ ] Rename setup, configure, and post_setup - cause setup conflicts with [plugin].setup
 - [ ] Make kinds symbol snake case
+- [ ] Show hidden files in fuzzysearch https://github.com/skbolton/titan/blob/4d0d31cc6439a7565523b1018bec54e3e8bc502c/nvim/nvim/lua/mappings/filesystem.lua#L6
 
 #### Tips
 - [ ] Rebind Ctrl to Caps Lock

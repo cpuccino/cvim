@@ -18,6 +18,8 @@ local function get_normal_search_mappings(actions)
     ['<CR>'] = actions.select_default,
     ['<C-u>'] = actions.preview_scrolling_up,
     ['<C-d>'] = actions.preview_scrolling_down,
+    ['gg'] = actions.move_to_top,
+    ['G'] = actions.move_to_bottom,
     ['?'] = actions.which_key
   };
 end
