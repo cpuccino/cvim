@@ -19,7 +19,8 @@ mod.list = {
 				}
 			}
 		}
-	}
+	},
+	'nvim-telescope/telescope.nvim'
 };
 
 return mod;

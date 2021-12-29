@@ -42,6 +42,11 @@ mod.sources = {
   { name = 'path' }
 };
 
+mod.search = {
+  prompt_prefix = " ",
+  selection_caret = " "
+};
+
 mod.borders =  {
   "╭", "─", "╮", "│", "╯", "─", "╰", "│"
 };

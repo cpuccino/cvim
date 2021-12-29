@@ -46,6 +46,11 @@ local function map_editor()
 	set_keymap('v', '<M-j>', ':move \'>+1<CR>gv=gv', options);
 end
 
+local function map_search()
+	set_keymap('n', '<C-p>', '<cmd>Telescope find_files<cr>', options);
+	set_keymap('n', '<C-F>', '<cmd>Telescope live_grep<cr>', options)
+end
+
 function mod.configure()
 	map_leader();
 	map_window_navigation();
@@ -53,6 +58,7 @@ function mod.configure()
 	map_buffer();
 	map_resize();
 	map_editor();
+	map_search();
 end
 
 function mod.load()

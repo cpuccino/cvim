@@ -9,6 +9,7 @@ Neovim configuration built on Lua **Requires Neovim v0.6.0**
 - [ ] Python, Pip & Pynvim
 - [ ] Nodejs & Neovim
 - [ ] Terminal using a patched font (NerdFont)
+- [ ] Ripgrep
 
 #### TODO
 
@@ -54,7 +55,9 @@ Neovim configuration built on Lua **Requires Neovim v0.6.0**
 - [ ] Add setup steps, settings, and configuration and move documentation to Private storage
 - [ ] Logo and installation folders
 - [ ] Use prequire https://github.com/shift-d/nv/search?p=2&q=prequire
-- [ ] Warn on override (ex: Throw an error if .cvim already exists) 
+- [ ] Warn on override (ex: Throw an error if .cvim already exists)
+- [ ] Rename setup, configure, and post_setup - cause setup conflicts with [plugin].setup
+- [ ] Make kinds symbol snake case
 
 #### Tips
 - [ ] Rebind Ctrl to Caps Lock

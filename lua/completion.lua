@@ -9,6 +9,8 @@ local function map_standard_navigation(cmp)
   return {
     ['<C-k>'] = cmp.mapping.select_prev_item(),
     ['<C-j>'] = cmp.mapping.select_next_item(),
+    -- ['<Up>'] = cmp.mapping.select_prev_item(),
+    -- ['<Down>'] = cmp.mapping.select_next_item(),
     ['<C-q>'] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
@@ -71,7 +73,7 @@ end
 function mod.configure()
   local cmp_ok, cmp = pcall(require, 'cmp');
   if not cmp_ok then
-    print('Cmp not found.');
+    print('Cmp not found. Attempting to install...');
     return;
   end
 
