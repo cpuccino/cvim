@@ -1,12 +1,12 @@
 local settings = require('settings');
 local keybindings = require('keybindings');
-local loader = require('loader');
+local plugin = require('plugin');
 local completion = require('completion');
 
 local function main()
 	settings.load();
 	keybindings.load();
-	loader.load();
+	plugin.load();
 	completion.load();
 end
 

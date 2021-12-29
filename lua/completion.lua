@@ -5,22 +5,15 @@ local symbol = require('configurations.symbol');
 local completion = require('configurations.completion');
 local fn = vim.fn;
 
-local function get_confirmation_options(cmp)
-  return {
-    behavior = cmp.ConfirmBehavior.Replace,
-    select = false,
-  };
-end
-
-local function get_standard_mapping(cmp)
+local function map_standard_navigation(cmp)
   return {
     ['<C-k>'] = cmp.mapping.select_prev_item(),
     ['<C-j>'] = cmp.mapping.select_next_item(),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    ['<C-e>'] = cmp.mapping({
+    ['<C-q>'] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true
@@ -28,7 +21,7 @@ local function get_standard_mapping(cmp)
   };
 end
 
-local function get_supertab_mapping(cmp)
+local function map_supertab_navigation(cmp)
   return {
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -51,11 +44,18 @@ local function get_supertab_mapping(cmp)
   };
 end
 
+local function get_confirmation_options(cmp)
+  return {
+    behavior = cmp.ConfirmBehavior.Replace,
+    select = false,
+  };
+end
+
 local function build_completion_config(cmp)
   local sources = cmp.config.sources(symbol.sources);
   local confirmation_options = get_confirmation_options(cmp);
   local mapping = vim.tbl_extend(
-    'force', get_standard_mapping(cmp), get_supertab_mapping(cmp)
+    'force', map_standard_navigation(cmp), map_supertab_navigation(cmp)
   );
 
   return {
