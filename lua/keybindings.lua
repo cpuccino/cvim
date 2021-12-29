@@ -5,7 +5,7 @@ local options = { noremap = true, silent = true };
 
 local function map_leader()
 	set_keymap('', '<Space>', '<Nop>', options);
-	vim.g.mapleader = " ";
+	vim.g.mapleader = ' ';
 end
 
 local function map_window_navigation()

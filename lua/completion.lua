@@ -2,35 +2,17 @@ local mod = {};
 
 local content = require('utilities.content');
 local symbol = require('configurations.symbol');
+local completion = require('configurations.completion');
 local fn = vim.fn;
 
-local completion_snippet = {
-  expand = function(args)
-    fn['vsnip#anonymous'](args.body);
-  end
-};
-
-local completion_formatting = {
-  fields = { 'kind', 'abbr', 'menu' },
-  format = function(entry, item)
-    item.kind = string.format('%s', symbol.kinds[item.kind]);
-    item.menu = symbol.labels[entry.source.name];
-    return item;
-  end
-};
-
-local function get_completion_confirm_options(cmp)
+local function get_confirmation_options(cmp)
   return {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
   };
 end
 
-local completion_documentation = {
-  border = symbol.borders
-};
-
-local function get_completion_mapping(cmp)
+local function get_standard_mapping(cmp)
   return {
     ['<C-k>'] = cmp.mapping.select_prev_item(),
     ['<C-j>'] = cmp.mapping.select_next_item(),
@@ -43,6 +25,11 @@ local function get_completion_mapping(cmp)
       behavior = cmp.ConfirmBehavior.Replace,
       select = true
     }),
+  };
+end
+
+local function get_supertab_mapping(cmp)
+  return {
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item();
@@ -64,6 +51,23 @@ local function get_completion_mapping(cmp)
   };
 end
 
+local function build_completion_config(cmp)
+  local sources = cmp.config.sources(symbol.sources);
+  local confirmation_options = get_confirmation_options(cmp);
+  local mapping = vim.tbl_extend(
+    'force', get_standard_mapping(cmp), get_supertab_mapping(cmp)
+  );
+
+  return {
+    snippet = completion.snippet,
+    mapping = mapping,
+    formatting = completion.formatting,
+    sources = sources,
+    confirm_opts = confirmation_options,
+    documentation = completion.documentation
+  };
+end
+
 function mod.configure()
   local cmp_ok, cmp = pcall(require, 'cmp');
   if not cmp_ok then
@@ -71,16 +75,7 @@ function mod.configure()
     return;
   end
 
-  local cmp_config = {
-    snippet = completion_snippet,
-    mapping = get_completion_mapping(cmp),
-    formatting = completion_formatting,
-    sources = cmp.config.sources(symbol.sources),
-    confirm_opts = get_completion_confirm_options(cmp),
-    documentation = completion_documentation,
-  };
-
-  cmp.setup(cmp_config);
+  cmp.setup(build_completion_config(cmp));
 end
 
 function mod.load()

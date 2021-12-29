@@ -8,12 +8,6 @@ local nvim_execute = vim.api.nvim_command;
 local install_path = path.get_install_path();
 local is_bootstrap = path.dir_exists(install_path) == false;
 
-local function reload_settings_on_modify()
-	augroup.execute_definitions({
-		reload_packer_config = { 'BufWritePost plugins.lua source <afile> | PackerSync' }
-	});
-end
-
 function mod.setup()
 	if is_bootstrap == false then
 		print('Packer\'s configured. Skipping bootstrap.')
@@ -57,7 +51,9 @@ function mod.configure()
 end
 
 function mod.post_setup()
-	reload_settings_on_modify();
+	augroup.execute_definitions({
+		reload_packer_config = { 'BufWritePost plugin.lua source <afile> | PackerSync' }
+	});
 end
 
 function mod.load()
