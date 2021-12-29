@@ -1,7 +1,5 @@
 local mod = {};
 
-local os = require('utilities.os');
-
 local set_keymap = vim.api.nvim_set_keymap;
 local options = { noremap = true, silent = true };
 
@@ -27,9 +25,6 @@ end
 local function map_buffer()
 	set_keymap('n', '<Tab-p>', ':bnext<CR>', options);
 	set_keymap('n', '<Tab-n>', ':bprevious<CR>', options);
-end
-
-local function set_keybindings_explorer()
 end
 
 local function map_editor()
@@ -64,4 +59,4 @@ function mod.load()
 	mod.configure();
 end
 
-return mod; 
+return mod;

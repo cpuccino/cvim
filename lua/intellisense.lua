@@ -1,21 +1,20 @@
 local mod = {};
 
 local content = require('utilities.content');
-local symbols = require('plugins.symbols');
-
+local symbol = require('configurations.symbol');
 local fn = vim.fn;
 
 local completion_snippet = {
   expand = function(args)
     fn['vsnip#anonymous'](args.body);
-  end,
+  end
 };
 
 local completion_formatting = {
   fields = { 'kind', 'abbr', 'menu' },
   format = function(entry, item)
-    item.kind = string.format('%s', symbols.kind_icons[item.kind]);
-    item.menu = symbols.menu_label[entry.source.name];
+    item.kind = string.format('%s', symbol.kinds[item.kind]);
+    item.menu = symbol.labels[entry.source.name];
     return item;
   end
 };
@@ -28,7 +27,7 @@ local function get_completion_confirm_options(cmp)
 end
 
 local completion_documentation = {
-  border = symbols.rounded_border
+  border = symbol.borders
 };
 
 local function get_completion_mapping(cmp)
@@ -40,9 +39,9 @@ local function get_completion_mapping(cmp)
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
-    ['<CR>'] = cmp.mapping.confirm({ 
+    ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
-      select = true 
+      select = true
     }),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -76,7 +75,7 @@ function mod.configure()
     snippet = completion_snippet,
     mapping = get_completion_mapping(cmp),
     formatting = completion_formatting,
-    sources = cmp.config.sources(symbols.sources),
+    sources = cmp.config.sources(symbol.sources),
     confirm_opts = get_completion_confirm_options(cmp),
     documentation = completion_documentation,
   };

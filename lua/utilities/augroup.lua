@@ -2,7 +2,7 @@ local mod = {};
 
 local nvim_execute = vim.api.nvim_command;
 
-function mod.execute_augroups(definitions)
+function mod.execute_definitions(definitions)
 	for group_name, definition in pairs(definitions) do
 		nvim_execute('augroup' .. ' ' .. group_name);
 		nvim_execute('autocmd!');

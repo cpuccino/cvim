@@ -1,9 +1,13 @@
-local configurations = require('configurations');
-local plugins = require('plugins');
+local settings = require('settings');
+local keybindings = require('keybindings');
+local loader = require('loader');
+local intellisense = require('intellisense');
 
 local function main()
-	configurations.load();
-	plugins.load();
+	settings.load();
+	keybindings.load();
+	loader.load();
+	intellisense.load();
 end
 
 main();

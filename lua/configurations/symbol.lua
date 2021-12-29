@@ -1,6 +1,6 @@
 local mod = {};
 
-mod.kind_icons = {
+mod.kinds = {
   Text = '',
   Method = 'm',
   Function = '',
@@ -28,7 +28,7 @@ mod.kind_icons = {
   TypeParameter = ''
 };
 
-mod.menu_label = {
+mod.labels = {
   nvim_lsp = '[LSP]',
   vsnip = '[Snippet]',
   buffer = '[Buffer]',
@@ -42,8 +42,8 @@ mod.sources = {
   { name = 'path' }
 };
 
-mod.rounded_border =  { 
-  "╭", "─", "╮", "│", "╯", "─", "╰", "│" 
+mod.borders =  {
+  "╭", "─", "╮", "│", "╯", "─", "╰", "│"
 };
 
 return mod;

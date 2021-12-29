@@ -1,9 +1,9 @@
 local mod = {};
 
 local path = require('utilities.path');
-local fn = vim.fn;
+local opt = vim.opt;
 
-local editor_settings = {
+mod.settings = {
 	autoindent = true,
 	autoread = true,
 
@@ -50,7 +50,7 @@ local editor_settings = {
 	title = true,
 	incsearch = true,
 
-	completeopt = {'menuone', 'noinsert', 'noselect'},
+	completeopt = { 'menuone', 'noinsert', 'noselect' },
 
 	undodir = path.get_undo_path(),
 	undofile = true,
@@ -59,27 +59,9 @@ local editor_settings = {
 	updatetime = 300,
 	errorbells = false,
 
-	shortmess = vim.opt.shortmess + 'c',
-	whichwrap = vim.opt.whichwrap + '<,>,h,l,[,]',
-	iskeyword = vim.opt.iskeyword + '-'
+	shortmess = opt.shortmess + 'c',
+	whichwrap = opt.whichwrap + '<,>,h,l,[,]',
+	iskeyword = opt.iskeyword + '-'
 };
-
-function mod.setup()
-	local create_cache_path_cmd = 'mkdir -p' .. ' ' .. path.get_cache_path();
-	fn.system(create_cache_path_cmd);
-end
-
-function mod.configure()
-	print('Mapping default settings...');
-	for key, value in pairs(editor_settings) do
-		vim.opt[key] = value;
-	end
-	print('Successfully mapped default settings.');
-end
-
-function mod.load()
-	mod.setup();
-	mod.configure();
-end
 
 return mod;
